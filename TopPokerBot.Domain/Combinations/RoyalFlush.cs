@@ -5,6 +5,8 @@ namespace TopPokerBot.Domain.Combinations;
 /// <inheritdoc />
 public class RoyalFlush : ICombination
 {
+	private const int Weight = 1000;
+
 	private readonly KindOfRank[] _royalFlushSequence = {
 		KindOfRank.Ten,
 		KindOfRank.Jack,
@@ -14,10 +16,7 @@ public class RoyalFlush : ICombination
 	};
 
 	/// <inheritdoc />
-	public int Weight => 1000;
-
-	/// <inheritdoc />
-	public bool Completed(IReadOnlyCollection<Card> cards)
+	public CombinationResult Completed(IReadOnlyCollection<Card> cards)
 	{
 		if (cards == null)
 		{
@@ -26,7 +25,7 @@ public class RoyalFlush : ICombination
 
 		if (cards.Count is < 5 or > 7)
 		{
-			return false;
+			return new(false, null);
 		}
 
 		var sortedCards = cards.OrderBy(x => x.KindOfRank)
@@ -43,10 +42,10 @@ public class RoyalFlush : ICombination
 
 			if (cardsBySuits.Count() == 1)
 			{
-				return true;
+				return new(true, Weight);
 			}
 		}
 
-		return false;
+		return new(false, null);
 	}
 }
