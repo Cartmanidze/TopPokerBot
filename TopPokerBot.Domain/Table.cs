@@ -1,4 +1,6 @@
-﻿namespace TopPokerBot.Domain;
+﻿using TopPokerBot.Domain.Enums;
+
+namespace TopPokerBot.Domain;
 
 /// <summary>
 /// Model describing the table
