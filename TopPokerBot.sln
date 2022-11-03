@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot", "TopPokerBot\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot.Domain", "TopPokerBot.Domain\TopPokerBot.Domain.csproj", "{23B453AB-02CC-4B45-BE8E-DE32655FC6BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7AAC4086-E6B8-4395-B2F8-ED93DEF1D79E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot.Domain.Tests", "TopPokerBot.Domain.Tests\TopPokerBot.Domain.Tests.csproj", "{84ADE5C1-7123-4A80-8877-DD5756BC5D36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,12 @@ Global
 		{23B453AB-02CC-4B45-BE8E-DE32655FC6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23B453AB-02CC-4B45-BE8E-DE32655FC6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23B453AB-02CC-4B45-BE8E-DE32655FC6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84ADE5C1-7123-4A80-8877-DD5756BC5D36} = {7AAC4086-E6B8-4395-B2F8-ED93DEF1D79E}
 	EndGlobalSection
 EndGlobal
