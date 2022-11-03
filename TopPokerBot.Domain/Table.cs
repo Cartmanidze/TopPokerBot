@@ -10,7 +10,7 @@ public class Table : IAggregateRoot
 	private readonly HashSet<Card> _cardDeck = new();
 
 	/// <summary>
-	/// .ctr
+	/// .ctor
 	/// </summary>
 	public Table(Guid id, int number)
 	{
@@ -18,21 +18,7 @@ public class Table : IAggregateRoot
 
 		Number = number;
 
-		var suits = Enum.GetValues(typeof(Suit))
-			.Cast<Suit>()
-			.ToArray();
-
-		var kindsOfRanks = Enum.GetValues(typeof(KindOfRank))
-			.Cast<KindOfRank>()
-			.ToArray();
-
-		foreach (var suit in suits)
-		{
-			foreach (var kindOfRank in kindsOfRanks)
-			{
-				_cardDeck.Add(new(suit, kindOfRank));
-			}
-		}
+		InitializeCardDeck();
 	}
 
 	/// <summary>
@@ -49,4 +35,23 @@ public class Table : IAggregateRoot
 	/// Card deck
 	/// </summary>
 	public IReadOnlyCollection<Card> CardDeck => _cardDeck;
+
+	private void InitializeCardDeck()
+	{
+		var suits = Enum.GetValues(typeof(Suit))
+			.Cast<Suit>()
+			.ToArray();
+
+		var kindsOfRanks = Enum.GetValues(typeof(KindOfRank))
+			.Cast<KindOfRank>()
+			.ToArray();
+
+		foreach (var suit in suits)
+		{
+			foreach (var kindOfRank in kindsOfRanks)
+			{
+				_cardDeck.Add(new(suit, kindOfRank));
+			}
+		}
+	}
 }
