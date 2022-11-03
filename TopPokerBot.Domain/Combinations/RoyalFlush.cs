@@ -7,7 +7,8 @@ public class RoyalFlush : ICombination
 {
 	private const int Weight = 1000;
 
-	private readonly KindOfRank[] _royalFlushSequence = {
+	private readonly KindOfRank[] _royalFlushSequence =
+	{
 		KindOfRank.Ten,
 		KindOfRank.Jack,
 		KindOfRank.Queen,
@@ -31,19 +32,12 @@ public class RoyalFlush : ICombination
 		var sortedCards = cards.OrderBy(x => x.KindOfRank)
 			.ToArray();
 
-		var lastFiveCards = sortedCards.TakeLast(5)
-			.ToArray();
+		var cardsBySuits = sortedCards.GroupBy(x => x.Suit);
 
-		var kindsOfRanks = lastFiveCards.Select(x => x.KindOfRank);
-
-		if (kindsOfRanks.SequenceEqual(_royalFlushSequence))
+		if (cardsBySuits.Select(cardsBySuit => cardsBySuit.Select(x => x.KindOfRank))
+			.Any(kindsOfRanks => kindsOfRanks.SequenceEqual(_royalFlushSequence)))
 		{
-			var cardsBySuits = lastFiveCards.GroupBy(x => x.Suit);
-
-			if (cardsBySuits.Count() == 1)
-			{
-				return new(true, Weight);
-			}
+			return new(true, Weight);
 		}
 
 		return new(false, null);
