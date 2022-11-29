@@ -1,25 +1,27 @@
 ﻿using Reo.Core.BaseDomainModels.Interfaces;
-using TopPokerBot.Domain.Tables.Enums;
+using TopPokerBot.Domain.Tables.Events;
 
 namespace TopPokerBot.Domain.Tables;
 
 /// <summary>
 /// Model describing the table
 /// </summary>
-public class Table : IReoDomainModel
+public class Table : IReoAggregateRoot
 {
-	private readonly HashSet<Card> _cardDeck = new();
+	private readonly HashSet<Card> _cardDeck;
 
 	/// <summary>
 	/// .ctor
 	/// </summary>
-	public Table(Guid id, int number)
+	private Table(Guid id, int number, Settings settings, IEnumerable<Card> cardDeck)
 	{
 		Id = id;
 
 		Number = number;
 
-		InitializeCardDeck();
+		Settings = settings;
+
+		_cardDeck = cardDeck.ToHashSet();
 	}
 
 	/// <summary>
@@ -32,29 +34,29 @@ public class Table : IReoDomainModel
 	/// </summary>
 	public int Number { get; }
 
-	public Settings Settings { get; set; }
+	/// <summary>
+	/// Settings
+	/// </summary>
+	public Settings Settings { get; private set; }
 
 	/// <summary>
 	/// Card deck
 	/// </summary>
 	public IReadOnlyCollection<Card> CardDeck => _cardDeck;
 
-	private void InitializeCardDeck()
+	/// <summary>
+	/// Apply
+	/// </summary>
+	public static Table Apply(TableCreateEvent tableCreateEvent) => new(tableCreateEvent.Id, tableCreateEvent.Number,
+		tableCreateEvent.Settings, tableCreateEvent.CardDeck);
+
+	/// <summary>
+	/// Apply
+	/// </summary>
+	public Table Apply(SettingsEditEvent settingsEditEvent)
 	{
-		var suits = Enum.GetValues(typeof(Suit))
-			.Cast<Suit>()
-			.ToArray();
+		Settings = new(Settings.Id, Settings.NumberOfPlayers, settingsEditEvent.TimeOut, settingsEditEvent.RateSetting);
 
-		var kindsOfRanks = Enum.GetValues(typeof(KindOfRank))
-			.Cast<KindOfRank>()
-			.ToArray();
-
-		foreach (var suit in suits)
-		{
-			foreach (var kindOfRank in kindsOfRanks)
-			{
-				_cardDeck.Add(new(suit, kindOfRank));
-			}
-		}
+		return this;
 	}
 }

@@ -19,5 +19,5 @@ public class NumberOfPlayersShouldBeSixOrNine : IReoBusinessRule
 	public string Property => nameof(Settings.NumberOfPlayers);
 
 	/// <inheritdoc />
-	public bool IsBroken() => _numberOfPlayers is 6 or 9;
+	public bool IsBroken() => _numberOfPlayers != 6 && _numberOfPlayers != 9;
 }

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using TopPokerBot.Domain.Tables;
+using TopPokerBot.Domain.Tables.Events;
 using Xunit;
 
 namespace TopPokerBot.Domain.Tests;
@@ -12,14 +13,10 @@ public class TableTests
 		//Arrange
 		const int number = 1;
 
-		var id = Guid.NewGuid();
-
 		//Act
-		var table = new Table(id, number);
+		var table = Table.Apply(TableCreateEvent.Create(number, 9, TimeSpan.FromSeconds(30), default));
 
 		//Assret
-		table.Id.Should()
-			.Be(id);
 
 		table.Number.Should()
 			.Be(number);
