@@ -1,4 +1,4 @@
-﻿namespace TopPokerBot.Domain.Enums;
+﻿namespace TopPokerBot.Domain.Tables.Enums;
 
 /// <summary>
 /// Enum for kind of rank

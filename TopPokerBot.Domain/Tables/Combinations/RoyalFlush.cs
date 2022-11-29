@@ -1,7 +1,6 @@
-﻿using TopPokerBot.Domain.Enums;
-using TopPokerBot.Domain.Games.Tables.Cards;
+﻿using TopPokerBot.Domain.Tables.Enums;
 
-namespace TopPokerBot.Domain.Games.Combinations;
+namespace TopPokerBot.Domain.Tables.Combinations;
 
 /// <inheritdoc />
 public class RoyalFlush : ICombination

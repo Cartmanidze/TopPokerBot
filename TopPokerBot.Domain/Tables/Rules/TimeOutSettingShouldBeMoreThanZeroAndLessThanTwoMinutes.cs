@@ -1,6 +1,6 @@
 using Reo.Core.BaseDomainModels.ReoBusiness;
 
-namespace TopPokerBot.Domain.Games.Tables.Settings.Rules;
+namespace TopPokerBot.Domain.Tables.Rules;
 
 /// <inheritdoc />
 public class TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes : IReoBusinessRule
@@ -10,10 +10,7 @@ public class TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes : IReoBusin
 	/// <summary>
 	/// .ctor
 	/// </summary>
-	public TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(TimeSpan timeOut)
-	{
-		_timeOut = timeOut;
-	}
+	public TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(TimeSpan timeOut) => _timeOut = timeOut;
 
 	/// <inheritdoc />
 	public string Message => "Time out should be more than zero and less than two minutes";
@@ -22,8 +19,5 @@ public class TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes : IReoBusin
 	public string Property => nameof(Settings.TimeOut);
 
 	/// <inheritdoc />
-	public bool IsBroken()
-	{
-		return _timeOut <= TimeSpan.Zero || _timeOut.Minutes >= 2;
-	}
+	public bool IsBroken() => _timeOut <= TimeSpan.Zero || _timeOut.Minutes >= 2;
 }

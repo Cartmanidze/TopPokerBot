@@ -1,6 +1,4 @@
-﻿using TopPokerBot.Domain.Games.Tables.Cards;
-
-namespace TopPokerBot.Domain.Games.Combinations;
+﻿namespace TopPokerBot.Domain.Tables.Combinations;
 
 /// <summary>
 /// Interface describing combination

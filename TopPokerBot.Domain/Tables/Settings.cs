@@ -1,6 +1,7 @@
 using Reo.Core.BaseDomainModels.Interfaces;
+using TopPokerBot.Domain.Tables.ValueObjects;
 
-namespace TopPokerBot.Domain.Games.Tables.Settings;
+namespace TopPokerBot.Domain.Tables;
 
 /// <summary>
 /// settings of game
@@ -10,13 +11,13 @@ public class Settings : IReoDomainModel
 	/// <summary>
 	/// .ctor
 	/// </summary>
-	public Settings(Guid id, int numberOfPlayers, TimeSpan timeOut, decimal initialRate, decimal increaseRate)
+	public Settings(Guid id, int numberOfPlayers, TimeSpan timeOut,
+					RateSetting rateSetting)
 	{
 		Id = id;
 		NumberOfPlayers = numberOfPlayers;
 		TimeOut = timeOut;
-		InitialRate = initialRate;
-		IncreaseRate = increaseRate;
+		RateSetting = rateSetting;
 	}
 
 	/// <summary>
@@ -35,14 +36,7 @@ public class Settings : IReoDomainModel
 	public TimeSpan TimeOut { get; }
 
 	/// <summary>
-	/// Initial rate
+	/// setting of rate
 	/// </summary>
-	public decimal InitialRate { get; }
-
-	/// <summary>
-	/// Increase rate
-	/// </summary>
-	public decimal IncreaseRate { get; }
-
-	public static Settings Apply()
+	public RateSetting RateSetting { get; }
 }

@@ -1,8 +1,7 @@
 ﻿using Reo.Core.BaseDomainModels.Interfaces;
-using TopPokerBot.Domain.Enums;
-using TopPokerBot.Domain.Games.Tables.Cards;
+using TopPokerBot.Domain.Tables.Enums;
 
-namespace TopPokerBot.Domain.Games.Tables;
+namespace TopPokerBot.Domain.Tables;
 
 /// <summary>
 /// Model describing the table
@@ -32,6 +31,8 @@ public class Table : IReoDomainModel
 	/// Number of table
 	/// </summary>
 	public int Number { get; }
+
+	public Settings Settings { get; set; }
 
 	/// <summary>
 	/// Card deck
