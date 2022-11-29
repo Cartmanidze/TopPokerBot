@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Reo.Core.BaseDomainModels" Version="6.0.30491" />
+	  <PackageReference Include="Reo.Core.BaseDomainModels" Version="6.0.30493" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using TopPokerBot.Domain.Enums;
+﻿using Reo.Core.BaseDomainModels.Interfaces;
+using TopPokerBot.Domain.Enums;
 
 namespace TopPokerBot.Domain.Games.Tables.Cards;
 
@@ -7,4 +8,4 @@ namespace TopPokerBot.Domain.Games.Tables.Cards;
 /// </summary>
 /// <param name="Suit"> The suit of the card </param>
 /// <param name="KindOfRank"> The kind of rank of the card </param>
-public record Card(Suit Suit, KindOfRank KindOfRank);
+public record Card(Suit Suit, KindOfRank KindOfRank) : IReoValueObject;
