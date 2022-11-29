@@ -1,6 +1,6 @@
 ﻿using TopPokerBot.Domain.Enums;
 
-namespace TopPokerBot.Domain;
+namespace TopPokerBot.Domain.Games.Tables.Cards;
 
 /// <summary>
 /// Record describing the card model

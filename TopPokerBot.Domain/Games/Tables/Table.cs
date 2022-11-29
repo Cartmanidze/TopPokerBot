@@ -1,11 +1,13 @@
-﻿using TopPokerBot.Domain.Enums;
+﻿using Reo.Core.BaseDomainModels.Interfaces;
+using TopPokerBot.Domain.Enums;
+using TopPokerBot.Domain.Games.Tables.Cards;
 
-namespace TopPokerBot.Domain;
+namespace TopPokerBot.Domain.Games.Tables;
 
 /// <summary>
 /// Model describing the table
 /// </summary>
-public class Table : IAggregateRoot
+public class Table : IReoDomainModel
 {
 	private readonly HashSet<Card> _cardDeck = new();
 

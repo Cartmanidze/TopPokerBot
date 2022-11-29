@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
-using TopPokerBot.Domain.Combinations;
 using TopPokerBot.Domain.Enums;
+using TopPokerBot.Domain.Games.Combinations;
+using TopPokerBot.Domain.Games.Tables.Cards;
 using Xunit;
 
 namespace TopPokerBot.Domain.Tests.Combinations;

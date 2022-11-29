@@ -1,4 +1,4 @@
-﻿namespace TopPokerBot.Domain.Combinations;
+﻿namespace TopPokerBot.Domain.Games.Combinations;
 
 /// <summary>
 /// Result of combination

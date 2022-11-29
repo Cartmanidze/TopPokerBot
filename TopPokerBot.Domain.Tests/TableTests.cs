@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using TopPokerBot.Domain.Games.Tables;
 using Xunit;
 
 namespace TopPokerBot.Domain.Tests;
