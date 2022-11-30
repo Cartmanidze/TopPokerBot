@@ -1,4 +1,5 @@
 ﻿using TopPokerBot.Domain.Tables.Enums;
+using TopPokerBot.Domain.Tables.ValueObjects;
 
 namespace TopPokerBot.Domain.Tables.Combinations;
 

@@ -1,5 +1,7 @@
-﻿using Reo.Core.BaseDomainModels.Interfaces;
+﻿using Reo.Core.BaseDomainModels.Extensions;
+using Reo.Core.BaseDomainModels.Interfaces;
 using TopPokerBot.Domain.Tables.Events;
+using TopPokerBot.Domain.Tables.Rules;
 
 namespace TopPokerBot.Domain.Tables;
 
@@ -8,12 +10,10 @@ namespace TopPokerBot.Domain.Tables;
 /// </summary>
 public class Table : IReoAggregateRoot
 {
-	private readonly HashSet<Card> _cardDeck;
-
 	/// <summary>
 	/// .ctor
 	/// </summary>
-	private Table(Guid id, int number, Settings settings, IEnumerable<Card> cardDeck)
+	public Table(Guid id, int number, Settings settings, CardDeck cardDeck)
 	{
 		Id = id;
 
@@ -21,7 +21,7 @@ public class Table : IReoAggregateRoot
 
 		Settings = settings;
 
-		_cardDeck = cardDeck.ToHashSet();
+		CardDeck = cardDeck;
 	}
 
 	/// <summary>
@@ -42,19 +42,28 @@ public class Table : IReoAggregateRoot
 	/// <summary>
 	/// Card deck
 	/// </summary>
-	public IReadOnlyCollection<Card> CardDeck => _cardDeck;
+	public CardDeck CardDeck { get; }
 
 	/// <summary>
 	/// Apply
 	/// </summary>
-	public static Table Apply(TableCreateEvent tableCreateEvent) => new(tableCreateEvent.Id, tableCreateEvent.Number,
-		tableCreateEvent.Settings, tableCreateEvent.CardDeck);
+	public static Table Apply(TableCreateEvent tableCreateEvent)
+	{
+		new NumberOfPlayersShouldBeSixOrNine(tableCreateEvent.NumberOfPlayers).CheckRule();
+
+		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(tableCreateEvent.TimeOut).CheckRule();
+
+		return new(Guid.NewGuid(), tableCreateEvent.Number,
+			new(Guid.NewGuid(), tableCreateEvent.NumberOfPlayers, tableCreateEvent.TimeOut, tableCreateEvent.RateSetting), new());
+	}
 
 	/// <summary>
 	/// Apply
 	/// </summary>
 	public Table Apply(SettingsEditEvent settingsEditEvent)
 	{
+		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(settingsEditEvent.TimeOut).CheckRule();
+
 		Settings = new(Settings.Id, Settings.NumberOfPlayers, settingsEditEvent.TimeOut, settingsEditEvent.RateSetting);
 
 		return this;

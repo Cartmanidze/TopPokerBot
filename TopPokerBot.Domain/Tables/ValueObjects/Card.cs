@@ -1,7 +1,7 @@
 ﻿using Reo.Core.BaseDomainModels.Interfaces;
 using TopPokerBot.Domain.Tables.Enums;
 
-namespace TopPokerBot.Domain.Tables;
+namespace TopPokerBot.Domain.Tables.ValueObjects;
 
 /// <summary>
 /// Record describing the card model

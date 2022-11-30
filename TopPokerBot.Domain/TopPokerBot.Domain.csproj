@@ -11,4 +11,8 @@
 	  <PackageReference Include="Reo.Core.BaseDomainModels" Version="6.0.30493" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Tables\Repositories" />
+	</ItemGroup>
+
 </Project>

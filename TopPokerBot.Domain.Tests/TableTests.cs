@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using TopPokerBot.Domain.Tables;
-using TopPokerBot.Domain.Tables.Events;
 using Xunit;
 
 namespace TopPokerBot.Domain.Tests;
@@ -14,7 +13,7 @@ public class TableTests
 		const int number = 1;
 
 		//Act
-		var table = Table.Apply(TableCreateEvent.Create(number, 9, TimeSpan.FromSeconds(30), default));
+		var table = new Table(Guid.NewGuid(), number, null, new());
 
 		//Assret
 
@@ -24,16 +23,13 @@ public class TableTests
 		table.CardDeck.Should()
 			.NotBeNull();
 
-		table.CardDeck.Should()
+		table.CardDeck.Items.Should()
 			.NotBeEmpty();
 
-		table.CardDeck.Should()
+		table.CardDeck.Items.Should()
 			.HaveCount(52);
 
-		table.CardDeck.Should()
-			.NotBeEmpty();
-
-		table.CardDeck.Should()
+		table.CardDeck.Items.Should()
 			.OnlyHaveUniqueItems();
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace TopPokerBot.Domain.Tables.Combinations;
+﻿using TopPokerBot.Domain.Tables.ValueObjects;
+
+namespace TopPokerBot.Domain.Tables.Combinations;
 
 /// <summary>
 /// Interface describing combination
