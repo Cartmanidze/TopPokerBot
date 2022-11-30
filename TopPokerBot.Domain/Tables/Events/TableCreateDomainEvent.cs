@@ -6,7 +6,7 @@ namespace TopPokerBot.Domain.Tables.Events;
 /// <summary>
 /// event for table create
 /// </summary>
-public class TableCreateEvent
+public class TableCreateDomainEvent
 {
 	/// <summary>
 	/// Number of table

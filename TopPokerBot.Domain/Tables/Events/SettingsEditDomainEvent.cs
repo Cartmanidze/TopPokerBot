@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Reo.Core.BaseDomainModels.Interfaces;
 using TopPokerBot.Domain.Tables.ValueObjects;
 
 namespace TopPokerBot.Domain.Tables.Events;
@@ -6,7 +7,7 @@ namespace TopPokerBot.Domain.Tables.Events;
 /// <summary>
 /// event for edit settings
 /// </summary>
-public class SettingsEditEvent
+public class SettingsEditDomainEvent : IReoDomainEvent
 {
 	/// <summary>
 	/// Time out

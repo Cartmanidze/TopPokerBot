@@ -8,7 +8,7 @@ namespace TopPokerBot.Domain.Tables;
 /// <summary>
 /// Model describing the table
 /// </summary>
-public class Table : IReoAggregateRoot
+public class Table : IReoAggregateRoot<Guid>
 {
 	/// <summary>
 	/// .ctor
@@ -23,11 +23,6 @@ public class Table : IReoAggregateRoot
 
 		CardDeck = cardDeck;
 	}
-
-	/// <summary>
-	/// Identifier
-	/// </summary>
-	public Guid Id { get; }
 
 	/// <summary>
 	/// Number of table
@@ -45,26 +40,32 @@ public class Table : IReoAggregateRoot
 	public CardDeck CardDeck { get; }
 
 	/// <summary>
+	/// Identifier
+	/// </summary>
+	public Guid Id { get; }
+
+	/// <summary>
 	/// Apply
 	/// </summary>
-	public static Table Apply(TableCreateEvent tableCreateEvent)
+	public static Table Apply(TableCreateDomainEvent tableCreateDomainEvent)
 	{
-		new NumberOfPlayersShouldBeSixOrNine(tableCreateEvent.NumberOfPlayers).CheckRule();
+		new NumberOfPlayersShouldBeSixOrNine(tableCreateDomainEvent.NumberOfPlayers).CheckRule();
 
-		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(tableCreateEvent.TimeOut).CheckRule();
+		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(tableCreateDomainEvent.TimeOut).CheckRule();
 
-		return new(Guid.NewGuid(), tableCreateEvent.Number,
-			new(Guid.NewGuid(), tableCreateEvent.NumberOfPlayers, tableCreateEvent.TimeOut, tableCreateEvent.RateSetting), new());
+		return new(Guid.NewGuid(), tableCreateDomainEvent.Number,
+			new(Guid.NewGuid(), tableCreateDomainEvent.NumberOfPlayers, tableCreateDomainEvent.TimeOut, tableCreateDomainEvent.RateSetting),
+			new());
 	}
 
 	/// <summary>
 	/// Apply
 	/// </summary>
-	public Table Apply(SettingsEditEvent settingsEditEvent)
+	public Table Apply(SettingsEditDomainEvent settingsEditDomainEvent)
 	{
-		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(settingsEditEvent.TimeOut).CheckRule();
+		new TimeOutSettingShouldBeMoreThanZeroAndLessThanTwoMinutes(settingsEditDomainEvent.TimeOut).CheckRule(false);
 
-		Settings = new(Settings.Id, Settings.NumberOfPlayers, settingsEditEvent.TimeOut, settingsEditEvent.RateSetting);
+		Settings = new(Settings.Id, Settings.NumberOfPlayers, settingsEditDomainEvent.TimeOut, settingsEditDomainEvent.RateSetting);
 
 		return this;
 	}

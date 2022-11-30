@@ -8,6 +8,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7AAC4086
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot.Domain.Tests", "TopPokerBot.Domain.Tests\TopPokerBot.Domain.Tests.csproj", "{84ADE5C1-7123-4A80-8877-DD5756BC5D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot.Infrastructure", "TopPokerBot.Infrastructure\TopPokerBot.Infrastructure.csproj", "{A11AE7AB-C708-40BE-95BB-A04ACDCC74EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopPokerBot.Api", "TopPokerBot.Api\TopPokerBot.Api.csproj", "{25AE272A-DD59-4097-8FDD-A19F36A0EAEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84ADE5C1-7123-4A80-8877-DD5756BC5D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11AE7AB-C708-40BE-95BB-A04ACDCC74EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11AE7AB-C708-40BE-95BB-A04ACDCC74EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11AE7AB-C708-40BE-95BB-A04ACDCC74EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11AE7AB-C708-40BE-95BB-A04ACDCC74EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25AE272A-DD59-4097-8FDD-A19F36A0EAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25AE272A-DD59-4097-8FDD-A19F36A0EAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25AE272A-DD59-4097-8FDD-A19F36A0EAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25AE272A-DD59-4097-8FDD-A19F36A0EAEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{84ADE5C1-7123-4A80-8877-DD5756BC5D36} = {7AAC4086-E6B8-4395-B2F8-ED93DEF1D79E}
